@@ -16,7 +16,7 @@ public class ReunionPresencial extends Reunion {
      * @param listaInvitados La lista de invitados a la reunión.
      * @param sala El nombre de la sala donde se llevará a cabo la reunión.
      * @param tipoReunion El tipo de reunión.
-     * @throws Exception si ocurre un error al crear la reunión.
+     * @throws noInvitados si la lista de invitados es null.
      */
     public ReunionPresencial(int duracionPrevista, String organizador, Invitacion listaInvitados, String sala, tipoReunion tipoReunion) throws noInvitados{
         super(duracionPrevista, organizador, listaInvitados, sala, tipoReunion);

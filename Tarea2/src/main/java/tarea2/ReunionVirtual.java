@@ -16,7 +16,7 @@ public class ReunionVirtual extends Reunion {
      * @param listaInvitados La lista de invitados a la reunión.
      * @param enlace enlace utilizado para la reunión virtual.
      * @param tipoReunion tipo de reunión (presencial o virtual).
-     * @throws Exception si ocurre un error al crear la reunión.
+     * @throws noInvitados si la lista de invitados es null.
      */
     public ReunionVirtual(int duracionPrevista, String organizador, Invitacion listaInvitados, String enlace, tipoReunion tipoReunion) throws noInvitados {
         super(duracionPrevista, organizador, listaInvitados, enlace, tipoReunion);

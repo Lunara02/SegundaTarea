@@ -45,7 +45,17 @@ abstract class Reunion {
         this.TIPO = A.toString();
         this.Lista = Invitados.getInvitados();
     }
-
+    /**
+     * Establece la fecha y hora para la reunión.
+     *
+     * @param Year     El año de la fecha.
+     * @param Months   El mes de la fecha (1 para enero, 2 para febrero, etc.).
+     * @param Days     El día del mes.
+     * @param Hours    La hora del día en formato de 24 horas.
+     * @param Minutes  Los minutos de la hora.
+     * @param Seconds  Los segundos del minuto.
+     * @throws fechaPasada si la fecha y hora establecidas están en el pasado.
+     */
     public void setFechayHora(int Year, int Months, int Days, int Hours, int Minutes, int Seconds) throws fechaPasada {
         fecha = new Date(Year - 1900, Months - 1, Days);
         fecha.setSeconds(Seconds);
