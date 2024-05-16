@@ -43,4 +43,11 @@ class ReunionTest {
             assertTrue(true);
         }
     }
+    @Test
+    @DisplayName("Fecha valida")
+    void Fechavalida() throws noInvitados, fechaPasada{
+        Lista.invitar(emp1);
+        ReunionP = new ReunionPresencial(4,"Pedro",Lista, "Reunion 1", tipoReunion.MARKETING);
+        ReunionP.setFechayHora(2100,3,13,12,34,10);
+    }
 }
