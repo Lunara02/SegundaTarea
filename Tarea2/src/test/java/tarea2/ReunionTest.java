@@ -10,4 +10,10 @@ class ReunionTest {
     private Empleado emp1;
     private Invitacion Lista;
     private ReunionPresencial reunionP;
+
+    @BeforeEach
+    void setUp() {
+        emp1 = new Empleado("id2", "Lavalosa", "goku","hmry");
+        Lista = new Invitacion();
+    }
 }
