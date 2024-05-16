@@ -49,4 +49,8 @@ abstract class Reunion {
     public ArrayList<Empleado> getAusencias() {
         return asistencia.getAusencias();
     }
+
+    public ArrayList<Empleado> getRetrasos() {
+        return asistencia.getRetrasos();
+    }
 }
