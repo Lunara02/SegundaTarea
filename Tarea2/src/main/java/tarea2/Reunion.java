@@ -73,4 +73,11 @@ abstract class Reunion {
     public void iniciar() {
         horaInicio = Instant.now();
     }
+
+    public void finalizar() throws reunionNoFinalizada {
+        if(horaInicio == null){
+            throw new reunionNoFinalizada();
+        }
+        horaFin = Instant.now();
+    }
 }
