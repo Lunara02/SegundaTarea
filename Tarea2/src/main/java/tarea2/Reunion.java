@@ -61,4 +61,66 @@ abstract class Reunion {
     public int getPorcentajeAsistencia() {
         return (int)(((float) getTotalAsistencias() / (asistencia.getTotal())) * 100);
     }
+
+    public String calcularTiempoReal() {
+        Duration DuracionReu = Duration.between(horaInicio, horaFin);
+        Long Horas = DuracionReu.toHours();
+        Long Minutos = DuracionReu.toMinutes();
+        Long Segundos = DuracionReu.toSeconds();
+        return new String(String.format("%02d:%02d:%02d", Horas, Minutos, Segundos));
+    }
+
+    public void iniciar() {
+        horaInicio = Instant.now();
+    }
+
+    public void finalizar() throws reunionNoFinalizada {
+        if(horaInicio == null){
+            throw new reunionNoFinalizada();
+        }
+        horaFin = Instant.now();
+    }
+
+    public void llego(Empleado z)throws noInvitado {
+        if(Lista.contains(z)) {
+            z.setHoraLlegada();
+            asistencia.newAsistente(z, horaInicio, horaFin);
+        }
+        else{
+            throw new noInvitado(z.getNombre());
+        }
+    }
+
+    public void getInforme()throws reunionNoTerminada, nosetFechayHora {
+        if (horaInicio == null || horaFin == null){
+            throw new reunionNoTerminada();
+        }
+        if(horaPrevista == null){
+            throw new nosetFechayHora();
+        }
+        Contenido = Contenido + NombreSala + "\n" + "Tema = " + TIPO + "\n";
+        Contenido = Contenido + "ORGANIZADOR = "+ Organizador + "\n";
+        Contenido = Contenido + "Fecha y hora prevista = " + horaPrevista.toString().substring(0,9) + " | " + horaPrevista.toString().substring(11,19) + "\n";
+        Contenido = Contenido + "Duracion prevista = " + duracionPrevista.toHours() + "h" + "\n\n";
+        Contenido = Contenido + "Inicio = " + horaInicio.toString().substring(11,19) + "\n";
+        Contenido = Contenido + "Fin = " +  horaFin.toString().substring(11,19) + "\n";
+        Contenido = Contenido + "Duracion = " + calcularTiempoReal() + "\n\n";
+        Contenido = Contenido + "ASISTENCIA:" + "\n";
+        Contenido = Contenido + "Asistencia total = " + getTotalAsistencias() + "\n";
+        Contenido = Contenido + "Porcentaje asistencia = " + getPorcentajeAsistencia() + "%" + "\n";
+        Contenido = Contenido + "Puntuales = " + asistencia.getAsistencias().size() + "\n";
+        Contenido = Contenido + "Retrasados = " + asistencia.getRetrasos().size() + "\n";
+        Contenido = Contenido + "Ausentes = " + asistencia.getAusencias().size() + "\n\n";
+        Contenido = Contenido + "[NOMBRE]" + "\t" + "[APELLIDO]"+ "\t" + "[ID]" + "\t\t" + "[CORREO]" + "\t\t\t" + "[HORA]" + "\t\t" + "[ASISTENCIA]" + "\n\n";
+        for(int x = 0; x < asistencia.getAsistencias().size(); x++){
+            Contenido = Contenido + asistencia.getAsistencias().get(x).getNombre() + "\t\t" + asistencia.getAsistencias().get(x).getApellido() + "\t\t" + asistencia.getAsistencias().get(x).getId() + "\t\t" + asistencia.getAsistencias().get(x).getCorreo() + "\t\t" + asistencia.getAsistencias().get(x).getHoraLlegada().toString().substring(11,19) + "\t" + "PUNTUAL" + "\n";
+        }
+        for(int x = 0; x < asistencia.getRetrasos().size(); x++){
+            Contenido = Contenido + asistencia.getRetrasos().get(x).getNombre() + "\t\t" + asistencia.getRetrasos().get(x).getApellido() + "\t\t" + asistencia.getRetrasos().get(x).getId() + "\t\t" + asistencia.getRetrasos().get(x).getCorreo() + "\t\t" + asistencia.getRetrasos().get(x).getHoraLlegada().toString().substring(11,19) + "\t" + "RETRASADO" + "\n";
+        }
+        for(int x = 0; x < asistencia.getAusencias().size(); x++){
+            Contenido = Contenido + asistencia.getAusencias().get(x).getNombre() + "\t\t" + asistencia.getAusencias().get(x).getApellido() + "\t\t" + asistencia.getAusencias().get(x).getId() + "\t\t" + asistencia.getAusencias().get(x).getCorreo() + "\t\t" + "?" + "\t\t" + "AUSENTE" + "\n";
+        }
+        Nota Info = new Nota(Contenido, "[INFORME]");
+    }
 }
