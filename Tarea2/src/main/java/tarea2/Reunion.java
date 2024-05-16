@@ -57,4 +57,8 @@ abstract class Reunion {
     public int getTotalAsistencias() {
         return getAsistencias().size() + getRetrasos().size();
     }
+
+    public int getPorcentajeAsistencia() {
+        return (int)(((float) getTotalAsistencias() / (asistencia.getTotal())) * 100);
+    }
 }
