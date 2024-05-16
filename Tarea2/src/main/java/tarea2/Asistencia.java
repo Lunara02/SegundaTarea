@@ -35,4 +35,20 @@ public class Asistencia {
         arrRetrasos.add(e);
     }
 
+    public ArrayList<Empleado> getAsistencias() {
+        return arrAsistencias;
+    }
+
+    public ArrayList<Empleado> getRetrasos() {
+        return arrRetrasos;
+    }
+
+    public ArrayList<Empleado> getAusencias() {
+        return arrAusencias;
+    }
+
+
+    public int getTotal() {
+        return arrInvitados;
+    }
 }
