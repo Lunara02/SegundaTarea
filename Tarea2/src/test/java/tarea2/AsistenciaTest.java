@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 /**
  * Clase de prueba para la clase Asistencia.
+ * @author braian
  */
 class AsistenciaTest {
     private Empleado emp1;
