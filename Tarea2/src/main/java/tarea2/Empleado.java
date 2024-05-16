@@ -16,5 +16,28 @@ public class Empleado {
         this.apellido = apellido;
         this.correo = correo;
     }
-
+    public String getId() {
+        return id;
+    }
+    public String getApellido() {
+        return apellido;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public String getCorreo() {
+        return correo;
+    }
+    public Instant getHoraLlegada() {
+        return horaLlegada;
+    }
+    public void setHoraLlegada() {
+        this.horaLlegada = Instant.now();
+    }
+    public void setDepartamento(String Depa){
+        this.Dep = Depa;
+    }
+    public String getDepartamento(){
+        return Dep;
+    }
 }
