@@ -61,4 +61,12 @@ abstract class Reunion {
     public int getPorcentajeAsistencia() {
         return (int)(((float) getTotalAsistencias() / (asistencia.getTotal())) * 100);
     }
+
+    public String calcularTiempoReal() {
+        Duration DuracionReu = Duration.between(horaInicio, horaFin);
+        Long Horas = DuracionReu.toHours();
+        Long Minutos = DuracionReu.toMinutes();
+        Long Segundos = DuracionReu.toSeconds();
+        return new String(String.format("%02d:%02d:%02d", Horas, Minutos, Segundos));
+    }
 }
