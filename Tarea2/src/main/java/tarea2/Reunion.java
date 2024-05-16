@@ -80,4 +80,14 @@ abstract class Reunion {
         }
         horaFin = Instant.now();
     }
+
+    public void llego(Empleado z)throws noInvitado {
+        if(Lista.contains(z)) {
+            z.setHoraLlegada();
+            asistencia.newAsistente(z, horaInicio, horaFin);
+        }
+        else{
+            throw new noInvitado(z.getNombre());
+        }
+    }
 }
