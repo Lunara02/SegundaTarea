@@ -48,4 +48,15 @@ class NotaTest {
             assertTrue(true);
         }
     }
+    @Test
+    @DisplayName("Reunion Finalizada")
+    void ReunionFinalizada() throws InterruptedException, noInvitado, reunionNoTerminada, nosetFechayHora, reunionNoFinalizada, fechaPasada{
+        ReunionP.setFechayHora(2100,3,20,12,0,0);
+        ReunionP.llego(emp1);
+        ReunionP.iniciar();
+        Thread.sleep(2000);
+        ReunionP.llego(emp2);
+        ReunionP.finalizar();
+        ReunionP.getInforme();
+    }
 }
