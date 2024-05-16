@@ -41,4 +41,8 @@ abstract class Reunion {
             throw new fechaPasada();
         }
     }
+
+    public ArrayList<Empleado> getAsistencias() {
+        return asistencia.getAsistencias();
+    }
 }
