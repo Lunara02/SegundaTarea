@@ -53,4 +53,8 @@ abstract class Reunion {
     public ArrayList<Empleado> getRetrasos() {
         return asistencia.getRetrasos();
     }
+
+    public int getTotalAsistencias() {
+        return getAsistencias().size() + getRetrasos().size();
+    }
 }
