@@ -8,4 +8,8 @@ public class ReunionVirtual extends Reunion {
         super(duracionPrevista, organizador, listaInvitados, enlace, tipoReunion);
         this.enlace = enlace;
     }
+
+    public String getEnlace() {
+        return this.enlace;
+    }
 }
