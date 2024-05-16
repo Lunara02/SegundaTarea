@@ -4,8 +4,7 @@ package Excepciones;
  * La clase noInvitados es una excepción que se lanza cuando se intenta
  * acceder a la lista de invitados de una Invitacion que no tiene ningún empleado invitado.
  * Extiende la clase Exception.
- *
- * @author Cristobal Gonzalez
+ * @author Braian Urra
  */
 public class noInvitados extends Exception {
 

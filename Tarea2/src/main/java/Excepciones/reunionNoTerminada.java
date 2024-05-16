@@ -2,10 +2,8 @@ package Excepciones;
 
 /**
  * La clase reunionNoTerminada es una excepción que se lanza cuando se intenta
- * realizar una operación relacionada con una reunión que no ha sido iniciada o ya ha terminado.
- * Extiende la clase Exception.
- *
- * @author Cristobal Gonzalez
+ * realizar una operación relacionada con una reunión que no ha sido iniciada o no ha terminado.
+ * @author Braian Urra
  */
 public class reunionNoTerminada extends Exception {
 
