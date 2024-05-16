@@ -69,4 +69,8 @@ abstract class Reunion {
         Long Segundos = DuracionReu.toSeconds();
         return new String(String.format("%02d:%02d:%02d", Horas, Minutos, Segundos));
     }
+
+    public void iniciar() {
+        horaInicio = Instant.now();
+    }
 }
