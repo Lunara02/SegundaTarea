@@ -16,5 +16,8 @@ public class Invitacion {
     public void invitar(Departamento d) {
         invitados.addAll(d.getEmpleados());
     }
-
+    
+    public ArrayList<Empleado> getInvitados() {
+        return invitados;
+    }
 }
