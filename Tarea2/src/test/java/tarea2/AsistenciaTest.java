@@ -1,7 +1,8 @@
 package tarea2;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AsistenciaTest {
-
+    private Empleado emp1;
+    private Empleado emp2;
+    private Invitacion Lista;
+    private ReunionPresencial ReunionP;
 }
