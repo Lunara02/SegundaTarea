@@ -26,4 +26,10 @@ class ReunionTest {
             assertTrue(true);
         }
     }
+    @Test
+    @DisplayName("Lista invitados no vacia")
+    void Invitadosnovacio() throws noInvitados {
+        Lista.invitar(emp1);
+        ReunionP = new ReunionPresencial(4,"Pedro",Lista, "Reunion 1", tipoReunion.MARKETING);
+    }
 }
