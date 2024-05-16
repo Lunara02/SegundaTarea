@@ -227,7 +227,6 @@ abstract class Reunion {
      * @param Note La nota que se va a añadir.
      * @throws reunionNoTerminada si la reunión no ha comenzado
      */
-
     public void Notas(String Note) throws reunionNoTerminada{
         if(horaInicio == null){
             throw new reunionNoTerminada();
