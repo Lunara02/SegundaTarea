@@ -1,6 +1,5 @@
-package tarea2;
+package org.example;
 import Excepciones.*;
 
-public class ReunionVirtual extends Reunion {
-    private String enlace;
-}
+public class ReunionPresencial extends Reunion {
+    private String sala;
