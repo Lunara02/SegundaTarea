@@ -4,7 +4,7 @@ import Excepciones.*;
  * La clase ReunionVirtual representa una reunión virtual.
  * Extiende la clase Reunion e incluye información adicional sobre el enlace utilizado para la reunión.
  *
- * @author Cristobal Gonzalez
+ * @author Sebastian Vega
  */
 public class ReunionVirtual extends Reunion {
     private String enlace;

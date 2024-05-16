@@ -10,7 +10,7 @@ import java.util.Date;
  * Proporciona funcionalidades básicas para gestionar una reunión, como iniciar, finalizar, registrar asistencia, generar informes y crear notas.
  * Las clases hijas concretas (ReunionPresencial y ReunionVirtual) implementan detalles específicos de cada tipo de reunión.
  *
- * @author Cristobal Gonzalez
+ * @author Sebastian Vega
  */
 abstract class Reunion {
     private Date fecha;
@@ -24,6 +24,7 @@ abstract class Reunion {
     private Asistencia asistencia;
     private String TIPO;
     private ArrayList<Empleado> Lista;
+    private String Note = new String("");
     /**
      * Constructor para la clase Reunion.
      *
@@ -188,14 +189,14 @@ abstract class Reunion {
             Contenido = Contenido + asistencia.getAusencias().get(x).getNombre() + "\t\t" + asistencia.getAusencias().get(x).getApellido() + "\t\t" + asistencia.getAusencias().get(x).getId() + "\t\t" + asistencia.getAusencias().get(x).getCorreo() + "\t\t" + "?" + "\t\t" + "AUSENTE" + "\n";
         }
         Nota Info = new Nota(Contenido, "[INFORME]");
+        Nota InfoNotas = new Nota(Note, "[NOTAS]");
     }
-    /**
-     * Crea una nota con el contenido especificado y la guarda en un archivo de texto.
-     *
-     * @param contenido El contenido de la nota.
-     * @param nombreArchivo El nombre del archivo donde se guardará la nota.
-     */
-    public void crearNota(String contenido, String nombreArchivo){
-        Nota nota = new Nota(contenido,nombreArchivo);
+
+    public void Notas(String Note) throws reunionNoTerminada{
+        if(horaInicio == null){
+            throw new reunionNoTerminada();
+        }
+        this.Note = this.Note + "[" + Instant.now().toString().substring(11,19) + "]: ";
+        this.Note = this.Note + Note + "\n\n";
     }
 }
