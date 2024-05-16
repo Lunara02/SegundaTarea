@@ -32,4 +32,15 @@ class ReunionTest {
         Lista.invitar(emp1);
         ReunionP = new ReunionPresencial(4,"Pedro",Lista, "Reunion 1", tipoReunion.MARKETING);
     }
+    @Test
+    @DisplayName("Fecha Pasada")
+    void Fechapasada() throws noInvitados{
+        Lista.invitar(emp1);
+        ReunionP = new ReunionPresencial(4,"Pedro",Lista, "Reunion 1", tipoReunion.MARKETING);
+        try {
+            ReunionP.setFechayHora(1000,3,13,12,34,10);
+        } catch (fechaPasada e){
+            assertTrue(true);
+        }
+    }
 }
