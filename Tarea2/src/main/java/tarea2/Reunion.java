@@ -30,4 +30,15 @@ abstract class Reunion {
         this.TIPO = A.toString();
         this.Lista = Invitados.getInvitados();
     }
+
+    public void setFechayHora(int Year, int Months, int Days, int Hours, int Minutes, int Seconds) throws fechaPasada {
+        fecha = new Date(Year - 1900, Months - 1, Days);
+        fecha.setSeconds(Seconds);
+        fecha.setMinutes(Minutes);
+        fecha.setHours(Hours);
+        horaPrevista = fecha.toInstant();
+        if (horaPrevista.isBefore(Instant.now())){
+            throw new fechaPasada();
+        }
+    }
 }
