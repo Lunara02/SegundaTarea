@@ -61,7 +61,7 @@ class NotaTest {
     }
     @Test
     @DisplayName("Fecha y Hora null")
-    void FechayHoracnull() throws InterruptedException, noInvitado, reunionNoTerminada, reunionNoFinalizada {
+    void FechayHoranull() throws InterruptedException, noInvitado, reunionNoTerminada, reunionNoFinalizada {
         ReunionP.llego(emp1);
         ReunionP.iniciar();
         Thread.sleep(2000);
@@ -72,5 +72,16 @@ class NotaTest {
         } catch (nosetFechayHora e){
             assertTrue(true);
         }
+    }
+    @Test
+    @DisplayName("Fecha y Hora Elegidas")
+    void FechayHoracElegidas() throws InterruptedException, noInvitado, reunionNoTerminada, nosetFechayHora, reunionNoFinalizada, fechaPasada{
+        ReunionP.setFechayHora(2100,3,20,12,0,0);
+        ReunionP.llego(emp1);
+        ReunionP.iniciar();
+        Thread.sleep(2000);
+        ReunionP.llego(emp2);
+        ReunionP.finalizar();
+        ReunionP.getInforme();
     }
 }
