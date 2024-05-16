@@ -132,7 +132,13 @@ class NotaTest {
         ReunionP.finalizar();
         ReunionP.getInforme();
     }
-
+    /**
+     * Prueba para verificar el comportamiento cuando se generan notas y no se inicia reunion
+     *
+     * @throws InterruptedException si ocurre un error al pausar el hilo.
+     * @throws noInvitado si ocurre un error al registrar la llegada del empleado.
+     * @throws fechaPasada si la fecha y hora establecidas están en el pasado.
+     */
     @Test
     @DisplayName("Notas Reunion no a iniciado")
     void NotasReunionNoInicializada() throws InterruptedException, noInvitado, fechaPasada{
@@ -145,7 +151,16 @@ class NotaTest {
             assertTrue(true);
         }
     }
-
+    /**
+     * Prueba para verificar el comportamiento cuando se generan notas durante una reunion
+     *
+     * @throws InterruptedException si ocurre un error al pausar el hilo.
+     * @throws noInvitado si ocurre un error al registrar la llegada del empleado.
+     * @throws reunionNoTerminada si la reunión no ha finalizado.
+     * @throws nosetFechayHora si no se ha establecido la fecha y hora de la reunión.
+     * @throws reunionNoFinalizada si la reunión no ha sido finalizada.
+     * @throws fechaPasada si la fecha y hora establecidas están en el pasado.
+     */
     @Test
     @DisplayName("Notas Reunion iniciada")
     void NotasReunionInicializada() throws InterruptedException, noInvitado, reunionNoTerminada, nosetFechayHora, reunionNoFinalizada, fechaPasada{
