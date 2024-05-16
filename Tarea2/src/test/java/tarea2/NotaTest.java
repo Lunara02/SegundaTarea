@@ -59,4 +59,18 @@ class NotaTest {
         ReunionP.finalizar();
         ReunionP.getInforme();
     }
+    @Test
+    @DisplayName("Fecha y Hora null")
+    void FechayHoracnull() throws InterruptedException, noInvitado, reunionNoTerminada, reunionNoFinalizada {
+        ReunionP.llego(emp1);
+        ReunionP.iniciar();
+        Thread.sleep(2000);
+        ReunionP.llego(emp2);
+        ReunionP.finalizar();
+        try {
+            ReunionP.getInforme();
+        } catch (nosetFechayHora e){
+            assertTrue(true);
+        }
+    }
 }
