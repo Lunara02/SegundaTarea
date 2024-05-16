@@ -24,4 +24,14 @@ class NotaTest {
         Lista.invitar(emp3);
         ReunionP = new ReunionPresencial(4,"Pedro",Lista, "Reunion 1", tipoReunion.MARKETING);
     }
+    @Test
+    @DisplayName("Reunion No iniciada")
+    void ReunionNoInicializada() throws nosetFechayHora, fechaPasada{
+        ReunionP.setFechayHora(2100,3,20,12,0,0);
+        try {
+            ReunionP.getInforme();
+        } catch (reunionNoTerminada e){
+            assertTrue(true);
+        }
+    }
 }
