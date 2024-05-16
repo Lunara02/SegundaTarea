@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+
 /**
  * La clase Reunion es una clase abstracta que representa una reunión.
  * Proporciona funcionalidades básicas para gestionar una reunión, como iniciar, finalizar, registrar asistencia, generar informes y crear notas.
@@ -12,6 +13,7 @@ import java.util.Date;
  *
  * @author Sebastian Vega
  */
+
 abstract class Reunion {
     private Date fecha;
     private Instant horaPrevista = null;
@@ -25,6 +27,7 @@ abstract class Reunion {
     private String TIPO;
     private ArrayList<Empleado> Lista;
     private String Note = new String("");
+
     /**
      * Constructor para la clase Reunion.
      *
@@ -35,6 +38,7 @@ abstract class Reunion {
      * @param A El tipo de reunión (TECNICA, MARKETING, OTRO).
      * @throws Exception si ocurre un error al crear la reunión.
      */
+
     public Reunion(int duracionPrevista, String Organizador, Invitacion Invitados, String NombreSala, tipoReunion A) throws noInvitados{
         this.duracionPrevista = Duration.ofHours(duracionPrevista);
         this.Organizador = Organizador;
@@ -46,6 +50,7 @@ abstract class Reunion {
         this.TIPO = A.toString();
         this.Lista = Invitados.getInvitados();
     }
+
     /**
      * Establece la fecha y hora para la reunión.
      *
@@ -57,6 +62,7 @@ abstract class Reunion {
      * @param Seconds  Los segundos del minuto.
      * @throws fechaPasada si la fecha y hora establecidas están en el pasado.
      */
+
     public void setFechayHora(int Year, int Months, int Days, int Hours, int Minutes, int Seconds) throws fechaPasada {
         fecha = new Date(Year - 1900, Months - 1, Days);
         fecha.setSeconds(Seconds);
@@ -67,51 +73,63 @@ abstract class Reunion {
             throw new fechaPasada();
         }
     }
+
     /**
      * Obtiene la lista de empleados que asistieron a la reunión.
      *
      * @return La lista de empleados que asistieron.
      */
+
     public ArrayList<Empleado> getAsistencias() {
         return asistencia.getAsistencias();
     }
+
     /**
      * Obtiene la lista de empleados que estuvieron ausentes en la reunión.
      *
      * @return La lista de empleados que estuvieron ausentes.
      */
+
     public ArrayList<Empleado> getAusencias() {
         return asistencia.getAusencias();
     }
+
     /**
      * Obtiene la lista de empleados que llegaron tarde a la reunión.
      *
      * @return La lista de empleados que llegaron tarde.
      */
+
     public ArrayList<Empleado> getRetrasos() {
         return asistencia.getRetrasos();
     }
+
     /**
      * Obtiene el total de empleados que asistieron a la reunión, incluyendo los que llegaron tarde.
      *
      * @return El total de empleados que asistieron.
      */
+
     public int getTotalAsistencias() {
         return getAsistencias().size() + getRetrasos().size();
     }
+
     /**
      * Calcula el porcentaje de asistencia a la reunión.
      *
      * @return El porcentaje de asistencia.
      */
+
     public int getPorcentajeAsistencia() {
         return (int)(((float) getTotalAsistencias() / (asistencia.getTotal())) * 100);
     }
+
     /**
      * Calcula la duración real de la reunión en formato HH:MM:SS.
      *
      * @return La duración real de la reunión.
      */
+
     public String calcularTiempoReal() {
         Duration DuracionReu = Duration.between(horaInicio, horaFin);
         Long Horas = DuracionReu.toHours();
@@ -119,28 +137,34 @@ abstract class Reunion {
         Long Segundos = DuracionReu.toSeconds();
         return new String(String.format("%02d:%02d:%02d", Horas, Minutos, Segundos));
     }
+
     /**
      * Inicia la reunión, registrando la hora de inicio.
      */
+
     public void iniciar() {
         horaInicio = Instant.now();
     }
+
     /**
      * Finaliza la reunión, registrando la hora de finalización.
      * @throws reunionNoFinalizada si la reunion no ha sido iniciada y se intenta finalizar
      */
+
     public void finalizar() throws reunionNoFinalizada {
         if(horaInicio == null){
             throw new reunionNoFinalizada();
         }
         horaFin = Instant.now();
     }
+
     /**
      * Registra la llegada de un empleado a la reunión.
      *
      * @param z El empleado que llega a la reunión.
      * @throws noInvitado si el empleado no está en la lista de invitados.
      */
+
     public void llego(Empleado z)throws noInvitado {
         if(Lista.contains(z)) {
             z.setHoraLlegada();
@@ -150,14 +174,17 @@ abstract class Reunion {
             throw new noInvitado(z.getNombre());
         }
     }
+
     /**
      * Genera un informe detallado de la reunión, incluyendo información sobre la sala, el tema,
      * el organizador, la fecha y hora prevista, la duración prevista, la hora de inicio y fin real,
-     * la asistencia de los empleados (incluyendo puntuales, retrasados y ausentes) y genera un archivo de nota con el contenido del informe.
+     * la asistencia de los empleados (incluyendo puntuales, retrasados y ausentes) y genera un archivo
+     * de nota con el contenido del informe y otro para las notas del informe.
      *
      * @throws reunionNoTerminada si la reunión no ha sido iniciada o ya ha terminado.
      * @throws nosetFechayHora si no se ha establecido el horario
      */
+
     public void getInforme()throws reunionNoTerminada, nosetFechayHora {
         if (horaInicio == null || horaFin == null){
             throw new reunionNoTerminada();
@@ -191,6 +218,15 @@ abstract class Reunion {
         Nota Info = new Nota(Contenido, "[INFORME]");
         Nota InfoNotas = new Nota(Note, "[NOTAS]");
     }
+
+    /**
+     * Agrega una nota a las notas actuales con una marca de tiempo.
+     * Este método añade la nota proporcionada a las notas existentes
+     * con la hora actual
+     *
+     * @param Note La nota que se va a añadir.
+     * @throws reunionNoTerminada si la reunión no ha comenzado
+     */
 
     public void Notas(String Note) throws reunionNoTerminada{
         if(horaInicio == null){
