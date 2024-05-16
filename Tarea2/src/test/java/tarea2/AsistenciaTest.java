@@ -20,4 +20,14 @@ class AsistenciaTest {
         Lista.invitar(emp2);
         ReunionP = new ReunionPresencial(4,"Pedro",Lista, "Reunion 1", tipoReunion.MARKETING);
     }
+    @Test
+    @DisplayName("LLego empleado no invitado")
+    void TestNoInvitados() {
+        ReunionP.iniciar();
+        try {
+            ReunionP.llego(emp1);
+        } catch (noInvitado e){
+            assertTrue(true);
+        }
+    }
 }
