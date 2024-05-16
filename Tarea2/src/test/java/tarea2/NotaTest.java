@@ -75,7 +75,7 @@ class NotaTest {
     }
     @Test
     @DisplayName("Fecha y Hora Elegidas")
-    void FechayHoracElegidas() throws InterruptedException, noInvitado, reunionNoTerminada, nosetFechayHora, reunionNoFinalizada, fechaPasada{
+    void FechayHoraElegidas() throws InterruptedException, noInvitado, reunionNoTerminada, nosetFechayHora, reunionNoFinalizada, fechaPasada{
         ReunionP.setFechayHora(2100,3,20,12,0,0);
         ReunionP.llego(emp1);
         ReunionP.iniciar();
