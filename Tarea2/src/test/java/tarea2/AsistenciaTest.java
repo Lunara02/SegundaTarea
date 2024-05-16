@@ -30,4 +30,10 @@ class AsistenciaTest {
             assertTrue(true);
         }
     }
+    @Test
+    @DisplayName("LLego empleado invitado")
+    void TestInvitado() throws noInvitado{
+        ReunionP.iniciar();
+        ReunionP.llego(emp2);
+    }
 }
