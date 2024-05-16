@@ -132,7 +132,7 @@ class NotaTest {
         ReunionP.finalizar();
         ReunionP.getInforme();
     }
-    
+
     @Test
     @DisplayName("Notas Reunion no a iniciado")
     void NotasReunionNoInicializada() throws InterruptedException, noInvitado, fechaPasada{
@@ -144,5 +144,19 @@ class NotaTest {
         } catch (reunionNoTerminada e) {
             assertTrue(true);
         }
+    }
+
+    @Test
+    @DisplayName("Notas Reunion iniciada")
+    void NotasReunionInicializada() throws InterruptedException, noInvitado, reunionNoTerminada, nosetFechayHora, reunionNoFinalizada, fechaPasada{
+        ReunionP.setFechayHora(2100,3,20,12,0,0);
+        ReunionP.llego(emp1);
+        ReunionP.iniciar();
+        Thread.sleep(2000);
+        ReunionP.llego(emp2);
+        ReunionP.Notas("Todos votaron por comprar productos exportados de china");
+        ReunionP.Notas("Jose Menciono que si no se aprovecha el cobre se perdera mucho dinero");
+        ReunionP.finalizar();
+        ReunionP.getInforme();
     }
 }
